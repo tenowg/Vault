@@ -355,6 +355,13 @@ Vault currently supports the following: Permissions 3, PEX, GroupManager, bPerms
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/rscPermissions.jar</systemPath>
 		</dependency>
+		<dependency>
+			<groupId>regalowl</groupId>
+			<artifactId>hyperconomy</artifactId>
+			<version>0.973-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/HyperConomy.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>

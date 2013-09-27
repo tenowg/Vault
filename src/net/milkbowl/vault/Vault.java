@@ -100,6 +100,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.nijikokun.register.payment.Methods;
+import net.milkbowl.vault.economy.plugins.Economy_HyperConomy;
 import net.milkbowl.vault.economy.plugins.Economy_MiConomy;
 
 public class Vault extends JavaPlugin {
@@ -280,6 +281,9 @@ public class Vault extends JavaPlugin {
         
         // Try to load XPBank
         hookEconomy("XPBank", Economy_XPBank.class, ServicePriority.Normal, "com.gmail.mirelatrue.xpbank.XPBank");
+	
+	// Try to load HyperConomy
+	hookEconomy("HyperConomy", Economy_HyperConomy.class, ServicePriority.Normal, "regalowl.hyperconomy.HyperConomy");
     }
 
     /**
