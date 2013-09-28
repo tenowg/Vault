@@ -66,7 +66,7 @@ public class Economy_HyperConomy implements Economy {
 
 	@Override
 	public String format(double amount) {
-		return api.formatMoney(amount);
+		return amount;
 	}
 
 	@Override
