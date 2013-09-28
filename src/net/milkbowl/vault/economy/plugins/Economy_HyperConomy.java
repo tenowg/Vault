@@ -33,7 +33,7 @@ public class Economy_HyperConomy implements Economy {
 			Plugin hyperconomy = plugin.getServer().getPluginManager().getPlugin("HyperConomy");
 			if (hyperconomy != null && hyperconomy.isEnabled() && hyperconomy.getDescription().getVersion().startsWith("0.9")) {
 				economy = (HyperConomy) hyperconomy;
-				api = new HyperEconAPI();
+				api = HyperConomy.hyperEconAPI;
 				//account = new Account();
 				log.info(String.format("[%s][Economy] %s hooked.", plugin.getDescription().getName(), name));
 			}
@@ -71,12 +71,12 @@ public class Economy_HyperConomy implements Economy {
 
 	@Override
 	public String currencyNamePlural() {
-		return economy.getEconomy().currencyNamePlural();
+		return "";
 	}
 
 	@Override
 	public String currencyNameSingular() {
-		return economy.getEconomy().currencyNameSingular();
+		return "";
 	}
 
 	@Override
@@ -216,8 +216,9 @@ public class Economy_HyperConomy implements Economy {
 			if (economy.economy == null) {
 				Plugin hyperconomy = event.getPlugin();
 
-				if (hyperconomy.getDescription().getName().equals("HyperConomy") && hyperconomy.getDescription().getVersion().startsWith("0.9")) {
+				if (hyperconomy.getDescription().getName().equals("HyperConomy")) {
 					economy.economy = (HyperConomy) hyperconomy;
+					api = HyperConomy.hyperEconAPI;
 					log.info(String.format("[%s][Economy] %s hooked.", plugin.getDescription().getName(), economy.name));
 				}
 			}
@@ -226,8 +227,9 @@ public class Economy_HyperConomy implements Economy {
 		@EventHandler(priority = EventPriority.MONITOR)
 		public void onPluginDisable(PluginDisableEvent event) {
 			if (economy.economy != null) {
-				if (event.getPlugin().getDescription().getName().equals("HyperConomy") && event.getPlugin().getDescription().getVersion().startsWith("0.9")) {
+				if (event.getPlugin().getDescription().getName().equals("HyperConomy")) {
 					economy.economy = null;
+					api = null;
 					log.info(String.format("[%s][Economy] %s unhooked.", plugin.getDescription().getName(), economy.name));
 				}
 			}
