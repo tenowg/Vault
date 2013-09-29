@@ -61,12 +61,21 @@ public class Economy_HyperConomy implements Economy {
 
 	@Override
 	public int fractionalDigits() {
-		return economy.getEconomy().fractionalDigits();
+		return 2;
 	}
 
 	@Override
 	public String format(double amount) {
-		return api.formatMoney(amount);
+		String returnvalue;
+		
+		try {
+			returnvalue = api.formatMoney(amount);
+		} catch (NullPointerException e) {
+			System.out.println(amount);
+			returnvalue = "";
+		}
+		
+		return returnvalue;
 	}
 
 	@Override
@@ -195,6 +204,7 @@ public class Economy_HyperConomy implements Economy {
 
 	@Override
 	public boolean createPlayerAccount(String playerName) {
+		System.out.println("creating");
 		return api.createAccount(playerName);
 	}
 
